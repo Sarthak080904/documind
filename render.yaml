@@ -1,0 +1,21 @@
+# Render blueprint for the API. Point Render at this repo and it picks this up.
+services:
+  - type: web
+    name: documind-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      - key: GOOGLE_API_KEY
+        sync: false          # set in the Render dashboard
+      - key: ALLOWED_ORIGINS
+        sync: false          # e.g. https://documind.vercel.app
+    # DATA_DIR is deliberately unset: it defaults to ./data inside the project
+    # directory, which is writable on the free plan. That storage is ephemeral —
+    # the index is rebuilt whenever the instance restarts. For persistence,
+    # attach a Render disk and set DATA_DIR to its mount path.
