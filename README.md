@@ -1,5 +1,11 @@
 # DocuMind
 
+**Live:** [documind-rho-three.vercel.app](https://documind-rho-three.vercel.app) ·
+**API:** [documind-api-xiuy.onrender.com/api/health](https://documind-api-xiuy.onrender.com/api/health)
+
+> Hosted on free tiers: the API sleeps after 15 minutes of inactivity, so the
+> first request after a quiet spell takes about a minute to wake it up.
+
 Upload a PDF, ask questions about it, get answers that cite the page they came
 from. A working RAG system — retrieval is scoped to one document, and the model
 is given nothing but the passages that were retrieved.
