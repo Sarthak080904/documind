@@ -111,7 +111,7 @@ def _upstream(exc: Exception) -> str:
             "most likely been retired. Update the model name in the backend."
         )
     if "API key" in text or "PERMISSION_DENIED" in text or "UNAUTHENTICATED" in text:
-        return "Google rejected the API key. Check GOOGLE_API_KEY in backend/.env."
+        return "Google rejected the API key. Check the GOOGLE_API_KEY environment variable."
     if "RESOURCE_EXHAUSTED" in text or "429" in text:
         return "Google's rate limit was hit. Wait a moment and try again."
     return "The embedding service failed. See the backend log for details."
